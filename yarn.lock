@@ -1008,6 +1008,11 @@
     "@types/yargs" "^15.0.0"
     chalk "^4.0.0"
 
+"@leanplum/react-native-sdk@^1.1.1":
+  version "1.1.1"
+  resolved "https://registry.yarnpkg.com/@leanplum/react-native-sdk/-/react-native-sdk-1.1.1.tgz#b78f11c3967aa8aad7a43822883f7b251f6d1ba6"
+  integrity sha512-4/zRha5GPePYrf21ViePHGvwYZEnUkhC/BUXxH3wF6ouKhJTAhcK9XvhdBelwaV16vrYNm5cN72STp9BEaFfYg==
+
 "@react-native-community/cli-debugger-ui@^4.13.1":
   version "4.13.1"
   resolved "https://registry.yarnpkg.com/@react-native-community/cli-debugger-ui/-/cli-debugger-ui-4.13.1.tgz#07de6d4dab80ec49231de1f1fbf658b4ad39b32c"
