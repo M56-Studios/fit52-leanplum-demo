@@ -10,6 +10,9 @@ import com.facebook.react.ReactPackage;
 import com.facebook.soloader.SoLoader;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
+import com.leanplum.Leanplum;
+import com.leanplum.annotations.Parser;
+import com.leanplum.LeanplumActivityHelper;
 
 public class MainApplication extends Application implements ReactApplication {
 
@@ -45,6 +48,11 @@ public class MainApplication extends Application implements ReactApplication {
     super.onCreate();
     SoLoader.init(this, /* native exopackage */ false);
     initializeFlipper(this, getReactNativeHost().getReactInstanceManager());
+
+    Leanplum.setApplicationContext(this);
+    Parser.parseVariables(this);
+    //  For session lifecyle tracking.
+    LeanplumActivityHelper.enableLifecycleCallbacks(this);
   }
 
   /**
