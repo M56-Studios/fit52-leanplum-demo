@@ -2,7 +2,6 @@ import React, {useState, useEffect} from 'react';
 import {
   SafeAreaView,
   StyleSheet,
-  ScrollView,
   View,
   Text,
   StatusBar,
@@ -15,12 +14,21 @@ const App: () => React$Node = () => {
   const [isRegistered, setIsRegistered] = useState(false);
 
   useEffect(() => {
+    const env = 'dev';
     // Get your App ID and Keys from https://www.leanplum.com/dashboard?#/account/apps
-    // Leanplum.setAppIdForDevelopmentMode(
-    //   config.leanplum.appId,
-    //   config.leanplum.devApiKey,
-    // );
-    // Leanplum.start();
+    if (env === 'dev') {
+      Leanplum.setAppIdForDevelopmentMode(
+        config.leanplum.appId,
+        config.leanplum.devApiKey,
+      );
+    } else {
+      Leanplum.setAppIdForProductionMode(
+        config.leanplum.appId,
+        config.leanplum.prodApiKey,
+      );
+    }
+    console.log('starting leanplum');
+    Leanplum.start();
   });
 
   return (
@@ -31,14 +39,14 @@ const App: () => React$Node = () => {
           <Text style={styles.sectionTitle}>Leanplum Demo</Text>
           <Button
             title={isRegistered ? 'User Registered' : 'Register User'}
-            onPress={() => {
-              // Leanplum.setUserId('1');
-              // Leanplum.setUserAttributes({
-              //   email: '',
-              //   name: 'test user',
-              // });
-              // Leanplum.forceContentUpdate();
-              // Leanplum.track('user_registered');
+            onPress={async () => {
+              Leanplum.setUserId('3');
+              Leanplum.setUserAttributes({
+                // email: '',
+                name: 'test user',
+              });
+              await Leanplum.forceContentUpdate();
+              Leanplum.track('user_registered');
               setIsRegistered(true);
             }}
             disabled={isRegistered}
