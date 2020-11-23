@@ -39,13 +39,13 @@ const App: () => React$Node = () => {
           <Text style={styles.sectionTitle}>Leanplum Demo</Text>
           <Button
             title={isRegistered ? 'User Registered' : 'Register User'}
-            onPress={async () => {
+            onPress={() => {
               Leanplum.setUserId('3');
               Leanplum.setUserAttributes({
                 // email: '',
                 name: 'test user',
               });
-              await Leanplum.forceContentUpdate();
+              Leanplum.forceContentUpdate();
               Leanplum.track('user_registered');
               setIsRegistered(true);
             }}
